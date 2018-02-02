@@ -7,4 +7,11 @@ http.createServer((request,response) =>
     response.write("Hello World"); 
     response.end(); 
 
+    fs.readFile('provinces.JSON', 'utf8', function (err, data) {
+        if (err) throw err;
+        obj = JSON.parse(data);
+       });
+
+    console.log(obj);
+
 }).listen(8888);
