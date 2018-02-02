@@ -1,22 +1,26 @@
-"use strict";
-/* importation du module «fs» (file system) */
-const fs = require("fs");
+// Importation du module de gestion des événements «events»
+let events = require('events');
 
-/* lecture synchrone, la fonction: fs.readFileSync() 
-bloque l'éxécution des instructions suivantes */
+// Création d'un objet émetteur d'événement «.EventEmitter()»
+let emeteurEvenement = new events.EventEmitter();
 
-let data = fs.readFileSync('fichierText.txt');
+// Créer le gestionnaire d'événement « connectHandler »
+let connectHandler = () => {
+ console.log('connexion réussie.');
+ 
+ // lancer l'événement 'donnees_recu'
+ emeteurEvenement.emit('donnees_recues');
+}
 
-console.log(data.toString());
-console.log("Fin du programme");
-
-console.log("////////////////////////////////////////////");
-
-
-/* La fonction fs.readFile() est asynchrone elle ne bloque pas l'éxécution des instructions suivantes */
-fs.readFile('fichierText.txt', (err, data) => {
- if (err) return console.error(err);
- console.log(data.toString());
+// Lier l'événement de connexion au gestionnaire d'événement «connectHandler»
+emeteurEvenement.on('connexion', connectHandler);
+ 
+// Lier l'événement 'data_received' à la function anonyme 
+emeteurEvenement.on('donnees_recues', () => {
+ console.log('Donnéees bien reçues.');
 });
-/* «Fin du programme» apparaît avant la lecture du fichier */
-console.log("Fin du programme");
+
+// Lancer l'événement 'connexion' 
+emeteurEvenement.emit('connexion');
+
+console.log("Fin du programme.");
