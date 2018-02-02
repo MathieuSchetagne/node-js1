@@ -1,27 +1,11 @@
-'use strict';
-/* 
-on définit un Object litéral qui contient l'ensemble des provinces 
-*/
-let oProvince = {  "QC" : "Québec",
-                   "ON" : "Ontario",
-                   "MA" : "Manitoba",
-                   "SK" : "Saskashewan"
-                }
-/* 
-permet d'extraire l'ensemble des propriétés valeurs de l'objet litéral */
+"use strict";
+/* importation du module «fs» (file system) */
+let fs = require("fs");
 
-const contenu_objet_json = (o) =>{
-   let trace = '';
-   for (var p in o) { 
-     trace += p + ': ' + o[p] + '\n'; 
-   } 
-   return trace;
-   }
+/* lecture synchrone, la fonction: fs.readFileSync() 
+bloque l'éxécution des instructions suivantes */
 
-console.log(contenu_objet_json(oProvince))
-console.log('----------------------------')
+let data = fs.readFileSync('fichierText.txt');
 
-oProvince['AL'] = 'Alberta'
-oProvince.NB = 'Nouveau-Brunswick'
-
-console.log(contenu_objet_json(oProvince))
+console.log(data.toString());
+console.log("Fin du programme");
