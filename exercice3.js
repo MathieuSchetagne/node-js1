@@ -1,23 +1,18 @@
 'use strict';
 
-let elm;
+let unTableau = ['Québec', 'Ontario', 'Manitoba', 'Saskatshewan']
 
-let unTableau = ['Québec', 'Ontario', 'Manitoba', 'Saskatshewan'];
-
-unTableau.forEach((elm,i) => { console.log(i + ' ' + elm)})
+const affiche_tableau = (t) => { 
+   console.log('----------------------------') 
+   /* on accède au tableau par .forEach() */ 
+   t.forEach((elm,i) => {
+     console.log(i + ' ' + elm) 
+   })
+}
+affiche_tableau(unTableau)
 
 unTableau.push('Alberta')
 unTableau.push('Vancouver')
 unTableau.push('Nouveau-Brunswick')
 
-unTableau.forEach((elm,i) => { console.log(i + ' ' + elm)})
-
-/* l'approche ES6 */
-
-let i=0;
-
-for (elm of unTableau){
-
-console.log(elm + ' ' + i++)
-
-}
+affiche_tableau(unTableau)
