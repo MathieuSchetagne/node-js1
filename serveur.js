@@ -13,6 +13,10 @@ http.createServer((request,response) =>
     console.log('branchement sur le port 8888')
 
     let html = "<html>";
+    html += "<head>";
+    html += "<style> td{border : 1px solid black;}";
+    html += "</style>";
+    html += "</head>";
     html += "<table>";
     for(let nom in provinces )   {
         html += "<tr>";
