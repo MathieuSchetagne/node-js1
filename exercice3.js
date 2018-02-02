@@ -1,18 +1,27 @@
 'use strict';
+/* 
+on définit un Object litéral qui contient l'ensemble des provinces 
+*/
+let oProvince = {  "QC" : "Québec",
+                   "ON" : "Ontario",
+                   "MA" : "Manitoba",
+                   "SK" : "Saskashewan"
+                }
+/* 
+permet d'extraire l'ensemble des propriétés valeurs de l'objet litéral */
 
-let unTableau = ['Québec', 'Ontario', 'Manitoba', 'Saskatshewan']
+const contenu_objet_json = (o) =>{
+   let trace = '';
+   for (var p in o) { 
+     trace += p + ': ' + o[p] + '\n'; 
+   } 
+   return trace;
+   }
 
-const affiche_tableau = (t) => { 
-   console.log('----------------------------') 
-   /* on accède au tableau par .forEach() */ 
-   t.forEach((elm,i) => {
-     console.log(i + ' ' + elm) 
-   })
-}
-affiche_tableau(unTableau)
+console.log(contenu_objet_json(oProvince))
+console.log('----------------------------')
 
-unTableau.push('Alberta')
-unTableau.push('Vancouver')
-unTableau.push('Nouveau-Brunswick')
+oProvince['AL'] = 'Alberta'
+oProvince.NB = 'Nouveau-Brunswick'
 
-affiche_tableau(unTableau)
+console.log(contenu_objet_json(oProvince))
